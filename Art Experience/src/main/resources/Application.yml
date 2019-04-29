@@ -1,0 +1,9 @@
+app:
+  dataSource:
+    postgres:
+      port: 5433
+      username: postgres
+      password: postgres
+      host: localhost
+      databaseName: artexpapi
+        jdbc-url: jdbc:postgresql://${app.dataSource.postgres.host}:${app.dataSource.postgres.port}/${app.dataSource.postgres.databaseName}}
