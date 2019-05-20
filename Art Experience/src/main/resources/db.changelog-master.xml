@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <include file="includes/create_hibernate_sequence.xml" relativeToChangelogFile="true"/>
+    <include file="includes/create_barber_sequence.xml" relativeToChangelogFile="true"/>
+    <include file="includes/create_client_sequence.xml" relativeToChangelogFile="true"/>
+    <include file="includes/theme_barber_creation.xml" relativeToChangelogFile="true"/>
+    <include file="includes/site_client_creation.xml" relativeToChangelogFile="true"/>
+   <!-- Se colocan las tablas y las secuencias para que al generar el changelog se generen cada una de ellas,
+   se especifica la ubicacion y extencion del archivo-->
+
+    <!-- Se deben crear estos archivos en la carpeta de resources llamada include dentro de ellos se especifican los actos a realizar-->
+
+</databaseChangeLog>
