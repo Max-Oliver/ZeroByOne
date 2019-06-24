@@ -1,4 +1,4 @@
-package Configuration;
+package com.art.experience.dev.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

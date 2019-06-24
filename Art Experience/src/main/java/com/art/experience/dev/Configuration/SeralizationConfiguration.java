@@ -1,4 +1,4 @@
-package Configuration;
+package com.art.experience.dev.Configuration;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
