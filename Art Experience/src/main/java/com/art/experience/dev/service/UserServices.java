@@ -1,6 +1,6 @@
 package com.art.experience.dev.service;
 
-import com.art.experience.dev.data.UserRepository;
+import com.art.experience.dev.data.UserRepositoryJpa;
 import com.art.experience.dev.model.Usuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,11 @@ import java.util.Optional;
 @Service
 public class UserServices {
 
-    private UserRepository repository;
+    @Autowired
+    private final UserRepositoryJpa repository;
 
     @Autowired
-    public UserServices(final UserRepository repository){
+    public UserServices(final UserRepositoryJpa repository){
         this.repository = repository;
     }
 
