@@ -1,5 +1,6 @@
 package com.art.experience.dev.web;
 
+import com.art.experience.dev.data.UserRepositoryJpa;
 import com.art.experience.dev.model.Usuarios;
 import com.art.experience.dev.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,14 @@ import java.util.Optional;
 @RequestMapping("/user")
 public class UserRestController {
 
-    private UserServices userServices;
-
-
     @Autowired
-    public UserRestController(final UserServices userServices){
+    private UserServices userServices;
+    @Autowired
+    private UserRepositoryJpa repository;
+
+    public UserRestController(final UserServices userServices, final UserRepositoryJpa repository){
         this.userServices = userServices;
+        this.repository = repository;
     }
 
     @GetMapping("/id/{id_user}")
