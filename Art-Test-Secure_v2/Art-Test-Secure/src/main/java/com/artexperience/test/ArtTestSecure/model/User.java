@@ -1,20 +1,32 @@
 package com.artexperience.test.ArtTestSecure.model;
 
+//import org.springframework.hateoas.server.core.Relation;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Table(name = "usuarios")
 @Entity
-public class Usuarios {
+@Table(name = "users")
+//@Relation(value = "user", collectionRelation = "users")
+public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long id;
     @Column(name = "username")
     private String username;
+
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+               mappedBy = "user")
+    private Client client;
+    @OneToOne(fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL,
+                mappedBy = "user")
+    private Barber barber;
+
     @Column(name = "pass")
     private String password;
     @Column(name = "full_name")
@@ -29,6 +41,23 @@ public class Usuarios {
     private Instant deleteOn;
     @Column(name = "status")
     private boolean status;
+
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Barber getBarber() {
+        return barber;
+    }
+
+    public void setBarber(Barber barber) {
+        this.barber = barber;
+    }
 
     public Long getId() {
         return id;
@@ -106,16 +135,16 @@ public class Usuarios {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuarios usuarios = (Usuarios) o;
-        return status == usuarios.status &&
-                id.equals(usuarios.id) &&
-                username.equals(usuarios.username) &&
-                password.equals(usuarios.password) &&
-                fullname.equals(usuarios.fullname) &&
-                email.equals(usuarios.email) &&
-                cel.equals(usuarios.cel) &&
-                Objects.equals(createOn, usuarios.createOn) &&
-                Objects.equals(deleteOn, usuarios.deleteOn);
+        User user = (User) o;
+        return status == user.status &&
+                id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password) &&
+                fullname.equals(user.fullname) &&
+                email.equals(user.email) &&
+                cel.equals(user.cel) &&
+                Objects.equals(createOn, user.createOn) &&
+                Objects.equals(deleteOn, user.deleteOn);
     }
 
     @Override

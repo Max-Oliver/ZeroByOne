@@ -1,7 +1,6 @@
-package com.art.experience.dev.model;
+package com.artexperience.test.ArtTestSecure.model;
 
-import org.springframework.hateoas.core.Relation;
-
+import org.springframework.hateoas.server.core.Relation;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
@@ -12,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "reserva")
 @Relation(value = "reserva", collectionRelation = "reservas")
-public class Reserves implements Serializable {
+public class Reserva implements Serializable {
 
     @Id
     @GeneratedValue
@@ -102,7 +101,7 @@ public class Reserves implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reserves reserves = (Reserves) o;
+        Reserva reserves = (Reserva) o;
         return idReserva.equals(reserves.idReserva) &&
                 BarberId.equals(reserves.BarberId) &&
                 clienteId.equals(reserves.clienteId) &&

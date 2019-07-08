@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="default_users_creation_1" author="m...****@gmail.com">
+    <insert tableName="users">
+      <column name="id_user" valueNumeric="1">
+      </column>
+      <column name="username" value="Zero Test User">
+      </column>
+      <column name="pass" value="@user">
+      </column>
+      <column name="full_name" value="ZeroTestName">
+      </column>
+      <column name="email" value="test.email@gmail.net">
+      </column>
+      <column name="cel_phone" valueNumeric="094447788">
+      </column>
+      <column name="createOn" value="8-7-2019 00:00:00">
+      </column>
+      <column name="deleteOn" valueNumeric="">
+      </column>
+      <column name="status" value="true">
+      </column>
+    </insert>
+    </changeSet>
+
+  <changeSet id="default_users_creation_2" author="m...****@gmail.com">
+    <insert tableName="users">
+      <column name="id_user" valueNumeric="2">
+      </column>
+      <column name="username" value="Zero Test Admin">
+      </column>
+      <column name="pass" value="@admin">
+      </column>
+      <column name="full_name" value="ZeroTestName">
+      </column>
+      <column name="email" value="test.email@hotmail.com">
+      </column>
+      <column name="cel_phone" valueNumeric="093447788">
+      </column>
+      <column name="createOn" value="8-7-2019 00:00:00">
+      </column>
+      <column name="deleteOn" valueNumeric="">
+      </column>
+      <column name="status" value="true">
+      </column>
+    </insert>
+</changeSet>
+
+</databaseChangeLog>

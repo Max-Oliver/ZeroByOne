@@ -1,6 +1,6 @@
 package com.artexperience.test.ArtTestSecure.model;
 
-import org.springframework.hateoas.server.core.Relation;
+//import org.springframework.hateoas.server.core.Relation;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -8,13 +8,18 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "barber")
-@Relation(value = "barber", collectionRelation = "barbers")
+//@Relation(value = "barber", collectionRelation = "barbers")
+@Access(AccessType.FIELD)
 public class Barber {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id_barber")
     private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private User user;
+
     @Column(name= "name")
     private String name;
     @Column(name= "username")
@@ -35,8 +40,16 @@ public class Barber {
     private Instant dateFinish;
     @Column(name= "rate_of_barber")
     private String rateOfBarber;
-    @Column(name= "count_of_reservs_day")
+    @Column(name= "count_of_reserves_day")
     private String reservesByDay;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getUsername() {
         return username;

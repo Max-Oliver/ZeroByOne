@@ -1,8 +1,8 @@
-package com.art.experience.dev.web;
+package com.artexperience.test.ArtTestSecure.web;
 
-import com.art.experience.dev.data.UserRepositoryJpa;
-import com.art.experience.dev.model.Usuarios;
-import com.art.experience.dev.service.UserServices;
+import com.artexperience.test.ArtTestSecure.data.UserRepositoryJpa;
+import com.artexperience.test.ArtTestSecure.model.Usuarios;
+import com.artexperience.test.ArtTestSecure.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

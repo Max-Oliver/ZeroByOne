@@ -1,19 +1,23 @@
 package com.artexperience.test.ArtTestSecure.model;
 
+//import org.springframework.hateoas.server.core.Relation;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Objects;
 
-@Table(name = "client")
 @Entity
-public class Cliente {
+@Table(name = "client")
+//@Relation(value = "client", collectionRelation = "clients")
+public class Client {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id_client")
     private Long id;
     @Column(name= "name")
     private String name;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private User user;
     @Column(name= "username")
     private String username;
     @Column(name= "password")
@@ -30,10 +34,18 @@ public class Cliente {
     private Instant dateStart;
     @Column(name= "date_finished")
     private Instant dateFinish;
-    @Column(name= "stattus_of_client")
+    @Column(name= "status_of_client")
     private String Status;
     @Column(name= "type_of_bound_client")
     private String clientType;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getUsername() {
         return username;
@@ -135,19 +147,19 @@ public class Cliente {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return id.equals(cliente.id) &&
-                name.equals(cliente.name) &&
-                username.equals(cliente.username) &&
-                password.equals(cliente.password) &&
-                mail.equals(cliente.mail) &&
-                cel.equals(cliente.cel) &&
-                amountReservas.equals(cliente.amountReservas) &&
-                interactions.equals(cliente.interactions) &&
-                dateStart.equals(cliente.dateStart) &&
-                dateFinish.equals(cliente.dateFinish) &&
-                Status.equals(cliente.Status) &&
-                clientType.equals(cliente.clientType);
+        Client client = (Client) o;
+        return id.equals(client.id) &&
+                name.equals(client.name) &&
+                username.equals(client.username) &&
+                password.equals(client.password) &&
+                mail.equals(client.mail) &&
+                cel.equals(client.cel) &&
+                amountReservas.equals(client.amountReservas) &&
+                interactions.equals(client.interactions) &&
+                dateStart.equals(client.dateStart) &&
+                dateFinish.equals(client.dateFinish) &&
+                Status.equals(client.Status) &&
+                clientType.equals(client.clientType);
     }
 
     @Override

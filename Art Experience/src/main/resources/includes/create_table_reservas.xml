@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create_table_usuarios" author="max3.1994@gmail.com">
+        <createTable tableName="usuarios">
+            <column name="id_user" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(50)"/>
+            <column name="pass" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(50)">
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cel_phone" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="createOn" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleteOn" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="BOOLEAN">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="addUsuariosForeignKeyToSites" author="max3.1994@gmail.com">
+        <addForeignKeyConstraint baseColumnNames="username"
+                                 baseTableName="usuarios"
+                                 constraintName="fk_user_client"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="SET NULL"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="username"
+                                 referencedTableName="client"/>
+    </changeSet>
+</databaseChangeLog>
