@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create_table_barbers" author="max3.1994@gmail.com">
+        <createTable tableName="barbers">
+            <column name="id_barber" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(30)">
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cel" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_of_cuts" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_of_clients" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_start" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="amount_of_reserves_day" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="rate_of_barber" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="BOOLEAN">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="addBarberForeignKeyToUsers" author="max3.1994@gmail.com">
+        <addForeignKeyConstraint baseColumnNames="id_barber"
+                                 baseTableName="barbers"
+                                 constraintName="fk_barber_users"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="SET NULL"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id_user"
+                                 referencedTableName="users"/>
+    </changeSet>
+</databaseChangeLog>

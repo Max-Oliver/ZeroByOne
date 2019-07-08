@@ -1,6 +1,6 @@
-package com.art.experience.dev.data;
+package com.artexperience.test.ArtTestSecure.data;
 
-import com.art.experience.dev.model.Usuarios;
+import com.artexperience.test.ArtTestSecure.model.Usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;

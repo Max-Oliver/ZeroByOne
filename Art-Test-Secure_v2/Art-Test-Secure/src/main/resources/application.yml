@@ -1,0 +1,56 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ZoroIsMyMain/ZeroByOne.git
+          skipSslValidation: true
+  application:
+    name: ArtExperience-api
+  data:
+    rest:
+      default-page-size: 40
+      max-page-size: 1000
+      default-media-type: application/json
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/artexperiencedb
+    username: postgres
+    password: postgres
+
+  jpa:
+    properties:
+      hibernate.jdbc.time_zone: UTC
+    liquibase:
+        change-log: classpath:changelog/db.changelog-master.xml
+
+#artexperience:
+#  auth:
+#    enabled: false
+#      app-id: 5433
+#      app-key: postgres
+#      api-secret: postgres
+#      auth-server-url: http://localhost:8081
+#      token-reset-interval: 0
+#      retry-limit: 0
+#    security:
+#      cookieServiceUrl: http://art.expirience.com/users/cookie
+#      cookieServiceCookieList:
+#        - arAuth
+#        - arToken
+#      accountServiceUrl: https://art.expirience.com/accountservice/api/v1/users/accounts
+#      accountServiceCookieList:
+#        - arToken
+#      sessionCookieList:
+#          - arAuth
+#          - arToken
+#      tokenServiceUrl: www-authn.artexperience.com/
+#      applicationKey: a0d.as2d1.2a1d #Cambiar por la ApplicatonKey que obtenga en aws amazon
+#      applicationSecret: sd35f4s35f-s4d3f54ds3f5fd #Cambiar por la ApplicationSecret que nos de el aws amazon
+#      enabled: true #Seguridad activa, requiere authentication de tken y key del usuario
+
+#      barber:
+#        #archivar en un Json las barberia asociadas para poder tener un template para cada una de ellas.
+#        globalLink: https://list.of.barbers/barberList.json

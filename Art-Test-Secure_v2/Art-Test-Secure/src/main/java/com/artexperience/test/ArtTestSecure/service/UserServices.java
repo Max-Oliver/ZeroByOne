@@ -1,8 +1,10 @@
 package com.artexperience.test.ArtTestSecure.service;
 
-import com.artexperience.test.ArtTestSecure.data.UserRepositoryJpa;
-import com.artexperience.test.ArtTestSecure.model.Usuarios;
+import com.artexperience.test.ArtTestSecure.data.UserRepository;
+import com.artexperience.test.ArtTestSecure.model.Client;
+import com.artexperience.test.ArtTestSecure.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
@@ -11,24 +13,26 @@ import java.util.Optional;
 @Service
 public class UserServices {
 
-    @Autowired
-    private final UserRepositoryJpa repository;
+
+    @Qualifier("userServices")
+    private final UserRepository repository;
 
     @Autowired
-    public UserServices(final UserRepositoryJpa repository){
+    public UserServices(final UserRepository repository){
         this.repository = repository;
     }
 
-    public List<Usuarios> findAllUsers(){
+    public List<User> findAllUsers(){
         return repository.findAll();
     }
 
-    public Optional<Usuarios> findUsersById(Long id){
+    public Optional<User> findUsersById(final Long id){
         return repository.findById(id);
     }
 
-    public Usuarios create(final Usuarios bodyUser){
-        Usuarios user = new Usuarios();
+    public User createClientUser(final User bodyUser){
+        User user = new User();
+        Client client = new Client();
         user.setUsername(bodyUser.getUsername());
         user.setPassword(bodyUser.getPassword());
         user.setEmail(bodyUser.getEmail());
@@ -36,13 +40,13 @@ public class UserServices {
         user.setFullname(bodyUser.getFullname());
         user.setCreateOn(Instant.now());
         user.setStatus(true);
-        user.setDeleteOn(null);// este
-        user.setId(bodyUser.getId());//y este , sacar estos campos del objeto ya que se generan automaticamente
+        user.setDeleteOn(null);
+        user.setClient(client);
         return repository.save(user);
     }
 
-    public void deleteUserById(Long usuarios){
-        Optional<Usuarios> user = repository.findById(usuarios);
+    public void deleteUserById(Long idUser){
+        Optional<User> user = repository.findById(idUser);
         user.get().setStatus(false);
         repository.save(user.get());
     }
