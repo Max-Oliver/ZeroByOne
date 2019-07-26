@@ -1,0 +1,27 @@
+server:
+  port: 8082
+  tomcat:
+    max-threads: 300
+spring:
+  application:
+    name: artexperience-api
+  data:
+    rest:
+      default-page-size: 40
+      max-page-size: 1000
+      default-media-type: application/json
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/test #TODO: SE LE AGREGO ?searchpath=myschema AL FINAL para ver si funcionaba , NO.
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate.jdbc.time_zone: UTC
+
+  liquibase:
+    change-log: classpath:changelog/db.changelog-master.xml
+
+  logging:
+       level:
+          org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
