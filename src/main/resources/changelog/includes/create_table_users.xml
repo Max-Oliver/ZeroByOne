@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create_table_users" author="max3.1994@gmail.com">
+        <createTable tableName="users">
+            <column name="idUser" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cel_phone" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="createOn" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="deleteOn" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="status" type="BOOLEAN">
+            </column>
+            <column name="idClient" type="BIGINT">
+            </column>
+            <column name="idBarber" type="BIGINT">
+            </column>
+        </createTable>
+
+<!--        <addForeignKeyConstraint baseColumnNames="idUser"-->
+<!--                                 baseTableName="users"-->
+<!--                                 constraintName="fk_barbers_Users"-->
+<!--                                 deferrable="false"-->
+<!--                                 initiallyDeferred="false"-->
+<!--                                 onDelete="CASCADE"-->
+<!--                                 onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="idUser"-->
+<!--                                 referencedTableName="barbers"/>-->
+
+<!--        <addForeignKeyConstraint baseColumnNames="idUser"-->
+<!--                                 baseTableName="users"-->
+<!--                                 constraintName="fk_clients_Users"-->
+<!--                                 deferrable="false"-->
+<!--                                 initiallyDeferred="false"-->
+<!--                                 onDelete="CASCADE"-->
+<!--                                 onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="idUser"-->
+<!--                                 referencedTableName="clients"/>-->
+    </changeSet>
+</databaseChangeLog>
