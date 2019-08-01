@@ -1,6 +1,5 @@
 package com.art.experience.dev.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.core.Relation;
 
 import javax.persistence.*;
@@ -16,9 +15,8 @@ public class Reserve implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idReserve")
-    @JsonIgnore
-    private Long idReserve;
+    @Column(name = "reserve_id")
+    private Long reserve_id;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     private Barber barberId;
@@ -27,21 +25,33 @@ public class Reserve implements Serializable {
 
     @Column(name = "date_reserve")
     private Date dateReserve;
-    @Column(name = "time_reserve")
+
+    @Column(name = "delete_on")
+    private Instant deleteOn;
+    @Column(name = "create_on")
     private Instant createOn;
 
     @Column(name = "type_work")
     private TypeWork workToDo;
+
     @Column(name = "price")
     private Double price;
 
 
-    public Long getIdReserve() {
-        return idReserve;
+    public Instant getDeleteOn() {
+        return deleteOn;
     }
 
-    public void setIdReserve(Long idReserve) {
-        this.idReserve = idReserve;
+    public void setDeleteOn(Instant deleteOn) {
+        this.deleteOn = deleteOn;
+    }
+
+    public Long getReserve_id() {
+        return reserve_id;
+    }
+
+    public void setReserve_id(Long reserve_id) {
+        this.reserve_id = reserve_id;
     }
 
     public Barber getBarberId() {
@@ -97,7 +107,7 @@ public class Reserve implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reserve reserves = (Reserve) o;
-        return idReserve.equals(reserves.idReserve) &&
+        return reserve_id.equals(reserves.reserve_id) &&
                 barberId.equals(reserves.barberId) &&
                 clientId.equals(reserves.clientId) &&
                 dateReserve.equals(reserves.dateReserve) &&
@@ -108,7 +118,7 @@ public class Reserve implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idReserve, barberId, clientId, dateReserve, workToDo, price, createOn);
+        return Objects.hash(reserve_id, barberId, clientId, dateReserve, workToDo, price, createOn);
     }
 }
 

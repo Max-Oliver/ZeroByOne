@@ -8,12 +8,12 @@
 
     <changeSet id="create_table_reserves" author="max3.1994@gmail.com">
         <createTable tableName="reserves">
-            <column name="idReserve" type="BIGINT">
+            <column name="reserve_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="idBarber" type="BIGINT">
+            <column name="barber_id" type="BIGINT">
             </column>
-            <column name="idClient" type="BIGINT">
+            <column name="client_id" type="BIGINT">
             </column>
             <column name="date_reserve" type="TIMESTAMP WITH TIME ZONE">
             </column>
@@ -26,32 +26,32 @@
             <column name="price" type="DOUBLE">
                 <constraints nullable="false"/>
             </column>
-            <column name="createOn" type="TIMESTAMP WITH TIME ZONE">
+            <column name="create_on" type="TIMESTAMP WITH TIME ZONE">
                 <constraints nullable="false"/>
             </column>
-            <column name="deleteOn" type="TIMESTAMP WITH TIME ZONE">
+            <column name="delete_on" type="TIMESTAMP WITH TIME ZONE">
             </column>
             <column name="status" type="BOOLEAN">
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="idBarber"
+        <addForeignKeyConstraint baseColumnNames="barber_id"
                                  baseTableName="reserves"
                                  constraintName="fk_reserves_barbers"
                                  deferrable="false"
                                  initiallyDeferred="false"
                                  onDelete="CASCADE"
                                  onUpdate="NO ACTION"
-                                 referencedColumnNames="idBarber"
+                                 referencedColumnNames="barber_id"
                                  referencedTableName="barbers"/>
 
-        <addForeignKeyConstraint baseColumnNames="idClient"
+        <addForeignKeyConstraint baseColumnNames="client_id"
                                  baseTableName="reserves"
                                  constraintName="fk_reserves_client"
                                  deferrable="false"
                                  initiallyDeferred="false"
                                  onDelete="CASCADE"
                                  onUpdate="NO ACTION"
-                                 referencedColumnNames="idClient"
+                                 referencedColumnNames="client_id"
                                  referencedTableName="clients"/>
     </changeSet>
 

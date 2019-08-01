@@ -8,23 +8,23 @@
 
     <changeSet id="default_users_creation_1" author="ZoroIsMyMain">
         <insert tableName="users">
-            <column name="idUser" valueNumeric="1"/>
-            <column name="idClient" valueNumeric="1"/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="client_id" valueNumeric="1"/>
             <column name="username" value="Zero Barber"/>
             <column name="password" value="@user"/>
             <column name="full_name" value="Zero Test Barber"/>
             <column name="email" value="test.email@gmail.net"/>
             <column name="cel_phone" valueNumeric="094447788"/>
-            <column name="createOn" value="8-7-2019 00:00:00"/>
-            <column name="deleteOn" valueNumeric="null"/>
+            <column name="create_on" value="8-7-2019 00:00:00"/>
+            <column name="delete_on" valueNumeric="null"/>
             <column name="status" value="true"/>
         </insert>
     </changeSet>
 
     <changeSet id="default_users_creation_2" author="ZoroIsMyMain">
         <insert tableName="users">
-            <column name="idUser" valueNumeric="2"/>
-            <column name="idBarber" valueNumeric="1"/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="barber_id" valueNumeric="1"/>
             <column name="username" value="Zero Client"/>
             <column name="password" value="@admin"/>
             <column name="full_name" value="Zero Test Client"/>
@@ -36,8 +36,8 @@
 
     <changeSet id="default_clients_creation_1" author="ZoroIsMyMain">
         <insert tableName="clients">
-            <column name="idClient" value="1"/>
-            <column name="idUser" value="1"/>
+            <column name="client_id" value="1"/>
+            <column name="user_id" value="1"/>
             <column name="username" value="Zero Client"/>
             <column name="password" value="@admin"/>
             <column name="name" value="Zero Test Client"/>
@@ -45,8 +45,8 @@
             <column name="cel" valueNumeric="093447788"/>
             <column name="amount_of_reserves" value="15"/>
             <column name="amount_of_interactions" value="20"/>
-            <column name="date_start" value="25-07-2019 22:00:00"/>
-            <column name="date_finished" value="25-07-2019 22:00:00"/>
+            <column name="start_date" value="25-07-2019 22:00:00"/>
+            <column name="end_date" value="01-012-2021 22:00:00"/>
             <column name="status_of_client" value="true"/>
             <column name="type_of_bound_client" value="PREMIUM"/>
         </insert>
@@ -54,14 +54,14 @@
 
     <changeSet id="default_barbers_creation_1" author="ZoroIsMyMain">
         <insert tableName="barbers">
-            <column name="idBarber" valueNumeric="1"/>
-            <column name="idUser" valueNumeric="2"/>
+            <column name="barber_id" valueNumeric="1"/>
+            <column name="user_id" valueNumeric="2"/>
             <column name="username" value="Barber TEST"/>
             <column name="password" value="@admin"/>
             <column name="name" value="Zero Test Barber"/>
             <column name="email" value="test.email@hotmail.com"/>
             <column name="cel" valueNumeric="09335566"/>
-            <column name="date_start" value="25-07-2019 22:00:00"/>
+            <column name="start_date" value="25-07-2019 22:00:00"/>
             <column name="status" value="true"/>
             <column name="amount_of_cuts" value="130"/>
             <column name="amount_of_clients" value="150"/>

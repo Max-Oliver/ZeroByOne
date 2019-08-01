@@ -1,25 +1,24 @@
 package com.art.experience.dev.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.core.Relation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
 @Entity
 @Table(name = "barbers")
 @Relation(value = "barber", collectionRelation = "barbers")
-public class Barber {
+public class Barber implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idBarber")
-    @JsonIgnore
-    private Long id;
+    @Column(name = "barber_id")
+    private Long barberId;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "name")
@@ -28,18 +27,18 @@ public class Barber {
     private String username;
     @Column(name = "password")
     private String password;
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "email")
+    private String email;
     @Column(name = "cel")
     private Integer cel;
     @Column(name = "amount_of_cuts")
     private Long amountCuts;
     @Column(name = "amount_of_clients")
     private String clientsBarber;
-    @Column(name = "date_start")
-    private Instant dateStart;
-    @Column(name = "date_finished")
-    private Instant dateFinish;
+    @Column(name = "start_date")
+    private Instant startDate;
+    @Column(name = "end_date")
+    private Instant endDate;
     @Column(name = "rate_of_barber")
     private String rateOfBarber;
     @Column(name = "count_of_reserves_day")
@@ -69,12 +68,12 @@ public class Barber {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getBarberId() {
+        return barberId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBarberId(Long barberId) {
+        this.barberId = barberId;
     }
 
     public String getName() {
@@ -85,12 +84,12 @@ public class Barber {
         this.name = name;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getCel() {
@@ -117,20 +116,20 @@ public class Barber {
         this.clientsBarber = clientsBarber;
     }
 
-    public Instant getDateStart() {
-        return dateStart;
+    public Instant getStartDate() {
+        return startDate;
     }
 
-    public void setDateStart(Instant dateStart) {
-        this.dateStart = dateStart;
+    public void setStartDate(Instant startDate) {
+        this.startDate = startDate;
     }
 
-    public Instant getDateFinish() {
-        return dateFinish;
+    public Instant getEndDate() {
+        return endDate;
     }
 
-    public void setDateFinish(Instant dateFinish) {
-        this.dateFinish = dateFinish;
+    public void setEndDate(Instant endDate) {
+        this.endDate = endDate;
     }
 
     public String getRateOfBarber() {
@@ -154,23 +153,23 @@ public class Barber {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Barber barber = (Barber) o;
-        return id.equals(barber.id) &&
+        return barberId.equals(barber.barberId) &&
                 name.equals(barber.name) &&
                 username.equals(barber.username) &&
                 password.equals(barber.password) &&
-                mail.equals(barber.mail) &&
+                email.equals(barber.email) &&
                 cel.equals(barber.cel) &&
                 amountCuts.equals(barber.amountCuts) &&
                 clientsBarber.equals(barber.clientsBarber) &&
-                dateStart.equals(barber.dateStart) &&
-                dateFinish.equals(barber.dateFinish) &&
+                startDate.equals(barber.startDate) &&
+                endDate.equals(barber.endDate) &&
                 rateOfBarber.equals(barber.rateOfBarber) &&
                 reservesByDay.equals(barber.reservesByDay);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, username, password, mail, cel, amountCuts, clientsBarber, dateStart, dateFinish, rateOfBarber, reservesByDay);
+        return Objects.hash(barberId, name, username, password, email, cel, amountCuts, clientsBarber, startDate, endDate, rateOfBarber, reservesByDay);
     }
 }
 

@@ -1,9 +1,6 @@
 package com.art.experience.dev.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.core.Relation;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -11,36 +8,33 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",catalog= "postgres",schema = "public")
 @Relation(value = "user", collectionRelation = "users")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUser")
-    @JsonIgnore
-    private Long id;
+    @Column(name = "user_id")
+    private Long userId;
     @Column(name = "username")
     private String username;
 
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "user" )
-//    @JoinColumn(name = "idClient")
     private Client client;
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "user" )
-//    @JoinColumn(name = "idBarber")
     private Barber barber;
 
-    @Column(name = "pass")
+    @Column(name = "password")
     private String password;
     @Column(name = "full_name")
-    private String fullname;
+    private String fullName;
     @Column(name = "email")
     private String email;
     @Column(name = "cel_phone")
     private AtomicInteger cel;
-    @Column(name = "createOn")
+    @Column(name = "create_on")
     private Instant createOn;
-    @Column(name = "deleteOn")
+    @Column(name = "delete_on")
     private Instant deleteOn;
     @Column(name = "status")
     private boolean status;
@@ -62,12 +56,12 @@ public class User implements Serializable {
         this.barber = barber;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -86,12 +80,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -140,10 +134,10 @@ public class User implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return status == user.status &&
-                id.equals(user.id) &&
+                userId.equals(user.userId) &&
                 username.equals(user.username) &&
                 password.equals(user.password) &&
-                fullname.equals(user.fullname) &&
+                fullName.equals(user.fullName) &&
                 email.equals(user.email) &&
                 cel.equals(user.cel) &&
                 Objects.equals(createOn, user.createOn) &&
@@ -152,6 +146,6 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, fullname, email, cel, createOn, deleteOn, status);
+        return Objects.hash(userId, username, password, fullName, email, cel, createOn, deleteOn, status);
     }
 }

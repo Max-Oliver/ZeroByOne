@@ -35,7 +35,7 @@ public class UserServices {
         user.setPassword(bodyUser.getPassword());
         user.setEmail(bodyUser.getEmail());
         user.setCel(bodyUser.getCel());
-        user.setFullname(bodyUser.getFullname());
+        user.setFullName(bodyUser.getFullName());
         user.setCreateOn(Instant.now());
         user.setStatus(true);
         user.setDeleteOn(null);

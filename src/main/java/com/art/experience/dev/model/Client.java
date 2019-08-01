@@ -1,7 +1,5 @@
 package com.art.experience.dev.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.core.Relation;
 
 import javax.persistence.*;
@@ -12,17 +10,15 @@ import java.util.Objects;
 @Entity
 @Table(name = "clients")
 @Relation(value = "client", collectionRelation = "clients")
-public class Client implements Serializable {
+public class Client implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idClient")
-    @JsonIgnore
-    private Long id;
+    @Column(name = "client_id")
+    private Long clientId;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "idUser")
-    @JsonBackReference
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "name")
@@ -31,18 +27,18 @@ public class Client implements Serializable {
     private String username;
     @Column(name = "password")
     private String password;
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "email")
+    private String email;
     @Column(name = "cel")
     private Integer cel;
     @Column(name = "amount_of_reserves")
     private Long amountReservas;
     @Column(name = "amount_of_interactions")
     private String interactions;
-    @Column(name = "date_start")
-    private Instant dateStart;
-    @Column(name = "date_finished")
-    private Instant dateFinish;
+    @Column(name = "start_date")
+    private Instant startDate;
+    @Column(name = "end_date")
+    private Instant endDate;
     @Column(name = "status_of_client")
     private String Status;
     @Column(name = "type_of_bound_client")
@@ -72,12 +68,12 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public String getName() {
@@ -88,12 +84,12 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getCel() {
@@ -120,20 +116,20 @@ public class Client implements Serializable {
         this.interactions = interactions;
     }
 
-    public Instant getDateStart() {
-        return dateStart;
+    public Instant getStartDate() {
+        return startDate;
     }
 
-    public void setDateStart(Instant dateStart) {
-        this.dateStart = dateStart;
+    public void setStartDate(Instant startDate) {
+        this.startDate = startDate;
     }
 
-    public Instant getDateFinish() {
-        return dateFinish;
+    public Instant getEndDate() {
+        return endDate;
     }
 
-    public void setDateFinish(Instant dateFinish) {
-        this.dateFinish = dateFinish;
+    public void setEndDate(Instant endDate) {
+        this.endDate = endDate;
     }
 
     public String getStatus() {
@@ -157,23 +153,23 @@ public class Client implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return id.equals(client.id) &&
+        return clientId.equals(client.clientId) &&
                 name.equals(client.name) &&
                 username.equals(client.username) &&
                 password.equals(client.password) &&
-                mail.equals(client.mail) &&
+                email.equals(client.email) &&
                 cel.equals(client.cel) &&
                 amountReservas.equals(client.amountReservas) &&
                 interactions.equals(client.interactions) &&
-                dateStart.equals(client.dateStart) &&
-                dateFinish.equals(client.dateFinish) &&
+                startDate.equals(client.startDate) &&
+                endDate.equals(client.endDate) &&
                 Status.equals(client.Status) &&
                 clientType.equals(client.clientType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, username, password, mail, cel, amountReservas, interactions, dateStart, dateFinish, Status, clientType);
+        return Objects.hash(clientId, name, username, password, email, cel, amountReservas, interactions, startDate, endDate, Status, clientType);
     }
 
 }
