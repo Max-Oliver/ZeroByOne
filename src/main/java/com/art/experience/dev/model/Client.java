@@ -1,25 +1,22 @@
 package com.art.experience.dev.model;
 
 import org.springframework.hateoas.core.Relation;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.Instant;
+import java.time.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "clients")
 @Relation(value = "client", collectionRelation = "clients")
-public class Client implements Serializable{
+public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "client_sequence", allocationSize = 1)
     @Column(name = "client_id")
     private Long clientId;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name= "user_id")
+    private Long userId;
 
     @Column(name = "name")
     private String name;
@@ -44,12 +41,12 @@ public class Client implements Serializable{
     @Column(name = "type_of_bound_client")
     private String clientType;
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {

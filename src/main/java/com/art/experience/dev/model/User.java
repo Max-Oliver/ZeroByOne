@@ -2,27 +2,26 @@ package com.art.experience.dev.model;
 
 import org.springframework.hateoas.core.Relation;
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.Instant;
+import java.time.*;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 @Table(name = "users",catalog= "postgres",schema = "public")
 @Relation(value = "user", collectionRelation = "users")
-public class User implements Serializable {
+public class User{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "user_sequence", allocationSize = 1)
     @Column(name = "user_id")
     private Long userId;
     @Column(name = "username")
     private String username;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "user" )
-    private Client client;
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "user" )
-    private Barber barber;
+    @Column(name= "client_id")
+    private Long clientId;
+    @Column(name= "barber_id")
+    private Long barberId;
 
     @Column(name = "password")
     private String password;
@@ -31,7 +30,7 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
     @Column(name = "cel_phone")
-    private AtomicInteger cel;
+    private Integer cel;
     @Column(name = "create_on")
     private Instant createOn;
     @Column(name = "delete_on")
@@ -40,20 +39,20 @@ public class User implements Serializable {
     private boolean status;
 
 
-    public Client getClient() {
-        return client;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
-    public Barber getBarber() {
-        return barber;
+    public Long getBarberId() {
+        return barberId;
     }
 
-    public void setBarber(Barber barber) {
-        this.barber = barber;
+    public void setBarberId(Long barberId) {
+        this.barberId = barberId;
     }
 
     public Long getUserId() {
@@ -96,11 +95,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public AtomicInteger getCel() {
+    public Integer getCel() {
         return cel;
     }
 
-    public void setCel(AtomicInteger cel) {
+    public void setCel(Integer cel) {
         this.cel = cel;
     }
 

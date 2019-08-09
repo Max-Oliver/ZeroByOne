@@ -1,30 +1,28 @@
 package com.art.experience.dev.model;
 
 import org.springframework.hateoas.core.Relation;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "reserves")
 @Relation(value = "reserve", collectionRelation = "reserves")
-public class Reserve implements Serializable {
+public class Reserve {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "reserve_sequence", allocationSize = 1)
     @Column(name = "reserve_id")
     private Long reserve_id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    private Barber barberId;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    private Client clientId;
+    @Column(name= "barber_id")
+    private Long barberId;
+    @Column(name= "client_id")
+    private Long clientId;
 
     @Column(name = "date_reserve")
-    private Date dateReserve;
+    private Instant dateReserve;
 
     @Column(name = "delete_on")
     private Instant deleteOn;
@@ -54,27 +52,27 @@ public class Reserve implements Serializable {
         this.reserve_id = reserve_id;
     }
 
-    public Barber getBarberId() {
+    public Long getBarberId() {
         return barberId;
     }
 
-    public void setBarberId(Barber barberId) {
+    public void setBarberId(Long barberId) {
         this.barberId = barberId;
     }
 
-    public Client getClientId() {
+    public Long getClientId() {
         return clientId;
     }
 
-    public void setClientId(Client clientId) {
+    public void setClientId(Long clientId) {
         this.clientId = clientId;
     }
 
-    public Date getDateReserve() {
+    public Instant getDateReserve() {
         return dateReserve;
     }
 
-    public void setDateReserve(Date dateReserve) {
+    public void setDateReserve(Instant dateReserve) {
         this.dateReserve = dateReserve;
     }
 

@@ -1,25 +1,22 @@
 package com.art.experience.dev.model;
 
 import org.springframework.hateoas.core.Relation;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.Instant;
+import java.time.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "barbers")
 @Relation(value = "barber", collectionRelation = "barbers")
-public class Barber implements Serializable{
+public class Barber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "barber_sequence", allocationSize = 1)
     @Column(name = "barber_id")
     private Long barberId;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name= "user_id")
+    private Long userId;
 
     @Column(name = "name")
     private String name;
@@ -41,15 +38,15 @@ public class Barber implements Serializable{
     private Instant endDate;
     @Column(name = "rate_of_barber")
     private String rateOfBarber;
-    @Column(name = "count_of_reserves_day")
-    private String reservesByDay;
+    @Column(name = "amount_of_reserves_day")
+    private String amountOfReservesByDay;
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -140,12 +137,12 @@ public class Barber implements Serializable{
         this.rateOfBarber = rateOfBarber;
     }
 
-    public String getReservesByDay() {
-        return reservesByDay;
+    public String getAmountOfreservesByDay() {
+        return amountOfReservesByDay;
     }
 
-    public void setReservesByDay(String reservesByDay) {
-        this.reservesByDay = reservesByDay;
+    public void setAmountOfreservesByDay(String amountOfreservesByDay) {
+        this.amountOfReservesByDay = amountOfreservesByDay;
     }
 
     @Override
@@ -164,12 +161,12 @@ public class Barber implements Serializable{
                 startDate.equals(barber.startDate) &&
                 endDate.equals(barber.endDate) &&
                 rateOfBarber.equals(barber.rateOfBarber) &&
-                reservesByDay.equals(barber.reservesByDay);
+                amountOfReservesByDay.equals(barber.amountOfReservesByDay);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(barberId, name, username, password, email, cel, amountCuts, clientsBarber, startDate, endDate, rateOfBarber, reservesByDay);
+        return Objects.hash(barberId, name, username, password, email, cel, amountCuts, clientsBarber, startDate, endDate, rateOfBarber, amountOfReservesByDay);
     }
 }
 

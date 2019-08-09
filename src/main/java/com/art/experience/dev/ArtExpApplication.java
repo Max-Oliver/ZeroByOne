@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = {"com.art.experience.dev.data"})
 @EnableAutoConfiguration
 public class ArtExpApplication {
 

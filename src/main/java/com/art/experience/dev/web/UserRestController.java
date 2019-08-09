@@ -22,25 +22,25 @@ public class UserRestController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getUserById() {
+    public List<User> getUsers() {
         return userServices.findAllUsers();
     }
 
     @GetMapping("/id/{id_user}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> getUserById(@PathVariable("id_user") final Long idUser) {
-        return userServices.findUsersById(idUser);
+    public User getById(@PathVariable("id_user") final Long idUser) {
+        return userServices.findUsersById(idUser).get();
     }
 
-    @PostMapping("/createUser")
+    @PutMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody final User user) {
+    public User create(@RequestBody final User user) {
         return userServices.createClientUser(user);
     }
 
     @DeleteMapping("/delete/{id_user}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteUserById(@PathVariable("id_user") final Long user) {
+    public void deleteById(@PathVariable("id_user") final Long user) {
         userServices.deleteUserById(user);
     }
 
