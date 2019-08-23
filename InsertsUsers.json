@@ -1,0 +1,45 @@
+[
+  {
+    "userId": 1,
+    "username": "Zero Barber",
+    "clientId": 1,
+    "password": "@userId",
+    "fullName": "Zero Test Barber",
+    "email": "test.email@gmail.net",
+    "cel": 94447788,
+    "createOn": "2019-07-08T03:00:00Z",
+    "status": true
+  },
+  {
+    "userId": 2,
+    "username": "Zero Client",
+    "barberId": 1,
+    "password": "@admin",
+    "fullName": "Zero Test Client",
+    "email": "test.email@hotmail.com",
+    "cel": 93447788,
+    "status": true
+  },
+  {
+    "userId": 3,
+    "username": "Tony Stark",
+    "clientId": 4,
+    "password": "TonyStark4",
+    "fullName": "The Vengadores",
+    "email": "test.email@gmail.net",
+    "cel": 123534343,
+    "createOn": "2019-08-09T03:32:35.494174Z",
+    "status": true
+  },
+  {
+    "userId": 4,
+    "username": "LUNABI",
+    "clientId": 5,
+    "password": "MegaPiju1",
+    "fullName": "Luna Mia",
+    "email": "test.email@gmail.net",
+    "cel": 123534343,
+    "createOn": "2019-08-09T03:39:44.369608Z",
+    "status": true
+  }
+]

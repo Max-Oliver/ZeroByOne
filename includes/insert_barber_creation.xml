@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+<!--    <changeSet id="default_barbers_creation_1" author="ZoroIsMyMain">-->
+<!--        <insert tableName="barbers">-->
+<!--            <column name="barber_id" valueNumeric="1"/>-->
+<!--&lt;!&ndash;            <column name="user_id" valueNumeric="null"/>&ndash;&gt;-->
+<!--            <column name="username" value="Zero Barber"/>-->
+<!--            <column name="password" value="@user"/>-->
+<!--            <column name="name" value="Zero Test Barber"/>-->
+<!--            <column name="email" value="test.email@gmail.net"/>-->
+<!--            <column name="cel" valueNumeric="094447788"/>-->
+<!--            <column name="start_date" value="8-7-2019 00:00:00"/>-->
+<!--            <column name="amount_of_clients" valueNumeric="225"/>-->
+<!--            <column name="rate_of_barber" valueNumeric="3.5"/>-->
+<!--        </insert>-->
+<!--    </changeSet>-->
+</databaseChangeLog>
