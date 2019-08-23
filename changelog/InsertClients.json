@@ -1,0 +1,44 @@
+[
+  {
+    "clientId": 2,
+    "userId": 1,
+    "name": "Client TEST",
+    "username": "Client zero",
+    "password": "Client",
+    "email": "test.zero@gmail.com",
+    "cel": 11223345,
+    "amountReservas": 5,
+    "interactions": "30",
+    "startDate": "2019-08-22T04:10:31.926675Z",
+    "status": true,
+    "clientType": "nuevo"
+  },
+  {
+    "clientId": 4,
+    "userId": 3,
+    "name": "Client Two",
+    "username": "Client Two",
+    "password": "Client",
+    "email": "test.zero@gmail.com",
+    "cel": 11223345,
+    "amountReservas": 5,
+    "interactions": "25",
+    "startDate": "2019-08-22T04:20:26.759631Z",
+    "status": true,
+    "clientType": "nuevo"
+  },
+  {
+    "clientId": 6,
+    "userId": 5,
+    "name": "Client three",
+    "username": "Client three",
+    "password": "Client",
+    "email": "test.zero@gmail.com",
+    "cel": 11223345,
+    "amountReservas": 5,
+    "interactions": "25",
+    "startDate": "2019-08-22T04:29:38.450506Z",
+    "status": true,
+    "clientType": "nuevo"
+  }
+]

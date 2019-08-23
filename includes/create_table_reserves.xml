@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create_table_reserves" author="max3.1994@gmail.com">
+        <createTable tableName="reserves">
+            <column name="reserve_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="barber_id" type="BIGINT">
+            </column>
+            <column name="client_id" type="BIGINT">
+            </column>
+            <column name="date_reserve" type="TIMESTAMP WITH TIME ZONE">
+            </column>
+            <column name="time_reserve" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_work" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_on" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delete_on" type="TIMESTAMP WITH TIME ZONE">
+            </column>
+            <column name="status" type="BOOLEAN">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="barber_id"
+                                 baseTableName="reserves"
+                                 constraintName="fk_reserves_barbers"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="CASCADE"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="barber_id"
+                                 referencedTableName="barbers"/>
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="reserves"
+                                 constraintName="fk_reserves_client"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="CASCADE"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="client_id"
+                                 referencedTableName="clients"/>
+    </changeSet>
+
+</databaseChangeLog>

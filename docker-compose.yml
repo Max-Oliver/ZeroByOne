@@ -1,0 +1,22 @@
+#TODO: Change this Docker-Compose is very simple, and just we need specify what we use and we need.
+#version: '2'
+#services:
+#  postgres:
+#    container_name: postgres
+#    restart: always
+#    image: postgres
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 'secret' # TODO: Change this
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - ./data:/var/lib/postgres
+#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#  java:
+#    container_name: openjdk:11
+#    restart: always
+#    image: openjdk:11
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./html:/var/www/html

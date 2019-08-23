@@ -1,0 +1,39 @@
+[
+  {
+
+    "name": "Zero",
+    "cel": 99883344,
+    "email": "test.One@gmail.net",
+    "rateOfBarber": "1",
+    "username": "Data Test",
+    "password": "@userId",
+    "clientsBarber": 1000
+  },
+  {
+    "name": "One",
+    "cel": 2884566,
+    "email": "test.One@gmail.net",
+    "rateOfBarber": "2",
+    "username": "Data Test",
+    "password": "@userId",
+    "clientsBarber": 1000
+  },
+  {
+    "name": "Two",
+    "cel": 3345667,
+    "email": "test.One@gmail.net",
+    "rateOfBarber": "3",
+    "username": "Data Test",
+    "password": "@userId",
+    "clientsBarber": 1000
+  },
+  {
+    "name": "Four",
+    "cel": 34564564,
+    "email": "test.One@gmail.net",
+    "rateOfBarber": "4",
+    "username": "Data Test",
+    "password": "@userId",
+    "clientsBarber": 1000
+  }
+]
